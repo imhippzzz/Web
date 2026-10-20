@@ -1,0 +1,1 @@
+- [Scenepack catalog](scenepack-catalog.md) — Preserve the user's listed scenepacks and variants; only enable downloads with real file links.

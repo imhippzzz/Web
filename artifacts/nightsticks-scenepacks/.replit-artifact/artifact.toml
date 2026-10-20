@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Nightstick’s Scenepacks"
+description = "A dark, mobile-friendly catalog for browsing free TV and movie scenepacks, with searchable titles, categories, character pages, and clearly labeled sample content."
+version = "1.0.0"
+id = "artifacts/nightsticks-scenepacks"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19347
+
+[services.development]
+run = "pnpm --filter @workspace/nightsticks-scenepacks run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nightsticks-scenepacks", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/nightsticks-scenepacks/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19347"
+BASE_PATH = "/"
